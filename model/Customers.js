@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-mongoose.connect('mongodb://localhost/libraryMongoose');
 
 const customerSchema = new Schema({
     name : {type : String, required : true},
