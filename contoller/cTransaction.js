@@ -1,4 +1,5 @@
 const Transaction = require('../model/Transaction');
+const Book = require('../model/Books');
 
 let findAllTransaction = function (req,res) {
   Transaction.find()
@@ -14,8 +15,10 @@ let findAllTransaction = function (req,res) {
 };
 
 let addTransaction = function (req,res) {
-    let data = req.body;
+
+    var data = req.body;
     let date = new Date();
+
     let newTransaction = Transaction({
         memberid : data.memberid,
         days: data.days,
@@ -23,6 +26,26 @@ let addTransaction = function (req,res) {
         due_date: date.setDate(date.getDate() + parseInt(data.days)),
         booklist: data.booklist
     });
+    // masih error di bagian stock nya T.T, karena masalah Header nya
+    // Book.findById(data.booklist, function (err,book) {
+    //     if(err){
+    //         res.status(501).send(`something wrong with your connection`);
+    //     } else {
+    //         book.title = book.title;
+    //         book.author = book.author;
+    //         book.category = book.category;
+    //         book.stock = (+book.stock - +data.booklist.length);
+    //
+    //         book.save(function (err) {
+    //             if (err){
+    //                 res.status(502).send(`something wrong with your add`+err);
+    //             } else {
+    //                 res.send(`Updated 1 Document`);
+    //             }
+    //         });
+    //     }
+    // });
+
     //Save Data nya
     newTransaction.save(function (err) {
         if(err){
