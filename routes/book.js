@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const cBook = require('../contoller/cBook');
 
-/* GET home page. */
+/* GET Books page. */
 router.get('/',cBook.findAllBook);
 
 router.get('/:_id', cBook.findByID);

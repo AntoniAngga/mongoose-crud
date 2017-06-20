@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const cCustomer = require('../contoller/cCustomer');
 
-/* GET home page. */
+/* GET Customer page. */
 router.get('/',cCustomer.findAllCustomer);
 
 router.get('/:_id', cCustomer.findByID);
