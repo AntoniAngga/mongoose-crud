@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost/libraryMongoose');
 
 var index = require('./routes/index');
 var book = require('./routes/book');
-var student = require('./routes/customer');
+var customer = require('./routes/customer');
 var transaction = require('./routes/transaction');
 
 var app = express();
@@ -34,7 +34,7 @@ db.once('open', function() {
 
 app.use('/', index);
 app.use('/api/books', book);
-app.use('/api/student', student);
+app.use('/api/customer', customer);
 app.use('/api/transaction', transaction);
 
 // catch 404 and forward to error handler
